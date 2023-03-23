@@ -1,6 +1,6 @@
 import unittest
 
-from p_admin import PulsarAdmin
+from pulsar_admin.p_admin import PulsarAdmin
 from pulsar_admin.random_util import RandomUtil
 
 

@@ -13,7 +13,7 @@ jobs:
     - name: Install dependencies
       run: pip3 install -r requirements.txt
     - name: start pulsar container
-      run: docker run -p 6650:6650 -p 8080:8080 apachepulsar/pulsar:2.10.1 /pulsar/bin/pulsar standalone --no-functions-worker --no-stream-storage
+      run: docker run -d -p 6650:6650 -p 8080:8080 apachepulsar/pulsar:2.10.1 /pulsar/bin/pulsar standalone --no-functions-worker --no-stream-storage
     - name: Wait for pulsar start
       run: sleep 30
     - name: Run unit tests

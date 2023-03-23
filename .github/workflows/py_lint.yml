@@ -14,4 +14,4 @@ jobs:
       - name: install pylint
         run: pip3 install pylint
       - name: pylint
-        run: pylint --rcfile=.pylintrc .
+        run: pylint --rcfile=.pylintrc pulsar_admin

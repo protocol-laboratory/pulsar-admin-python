@@ -1,9 +1,9 @@
 import json
 from typing import List
 
-from http_client import HttpClient
-from url_const import UrlConst
-from pulsar_admin_exception import PulsarAdminException
+from pulsar_admin.http_client import HttpClient
+from pulsar_admin.pulsar_admin_exception import PulsarAdminException
+from pulsar_admin.url_const import UrlConst
 
 
 class Clusters:
@@ -17,5 +17,5 @@ class Clusters:
                 raise PulsarAdminException(
                     f"failed to get list of clusters, status code {response.status_code}, body: {response.text}")
             return json.loads(response)
-        except (IOError, OSError) as e:
+        except Exception as e:
             raise PulsarAdminException(e)

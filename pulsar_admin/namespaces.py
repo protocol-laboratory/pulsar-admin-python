@@ -18,3 +18,25 @@ class Namespaces:
                 f"Failed to get namespaces of tenant {tenant}, status code {status_code}, body: {response}"
             )
         return json.loads(response)
+
+    def create_namespace(self, tenant, namespace):
+        try:
+            status_code, response = self.http_client.put(
+                f"{UrlConst.NAMESPACES}/{tenant}/{namespace}"
+            )
+            if status_code != 204:
+                raise PulsarAdminException(
+                    f"Failed to create namespace {tenant}/{namespace}, status code {status_code}, body: {response}"
+                )
+        except (IOError, OSError, ValueError) as e:
+            raise PulsarAdminException(e)
+
+    def delete_namespace(self, tenant, namespace, force=False, authoritative=False):
+        params = [("force", str(force)), ("authoritative", str(authoritative))]
+        status_code, response = self.http_client.delete(
+            f"{UrlConst.NAMESPACES}/{tenant}/{namespace}", params=params
+        )
+        if status_code != 204:
+            raise PulsarAdminException(
+                f"Failed to delete namespace {tenant}/{namespace}, status code {status_code}, body: {response}"
+            )

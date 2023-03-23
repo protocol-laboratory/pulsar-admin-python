@@ -1,8 +1,8 @@
-from clusters import Clusters
-from http_client import HttpClient
+from pulsar_admin.clusters import Clusters
+from pulsar_admin.http_client import HttpClient
 from pulsar_admin.namespaces import Namespaces
 from pulsar_admin.persistent_topics import PersistentTopics
-from tenants import Tenants
+from pulsar_admin.tenants import Tenants
 
 
 class PulsarAdmin:
@@ -12,4 +12,3 @@ class PulsarAdmin:
         self.tenants = Tenants(self.http_client)
         self.namespaces = Namespaces(self.http_client)
         self.persistent_topics = PersistentTopics(self.http_client)
-

@@ -3,7 +3,7 @@ from dataclasses import dataclass
 
 
 @dataclass
-class PartitionedTopicMetadataDto:
+class PartitionedTopicMetadata:
     partitions: int
     deleted: bool
     properties: Dict[str, str] = None

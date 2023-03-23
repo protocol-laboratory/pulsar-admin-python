@@ -1,7 +1,8 @@
-from pulsar_admin.http_client import HttpClient
 import json
 
+from pulsar_admin.http_client import HttpClient
 from pulsar_admin.pulsar_admin_exception import PulsarAdminException
+from pulsar_admin.tenant_info import TenantInfo
 from pulsar_admin.url_const import UrlConst
 
 
@@ -9,7 +10,7 @@ class Tenants:
     def __init__(self, http_client: HttpClient):
         self.http_client = http_client
 
-    def create_tenant(self, tenant, tenant_info):
+    def create_tenant(self, tenant, tenant_info: TenantInfo):
         endpoint = f"{UrlConst.TENANTS}/{tenant}"
         data = json.dumps(tenant_info)
         status_code, response = self.http_client.put(endpoint, data=data)
