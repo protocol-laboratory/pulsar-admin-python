@@ -7,7 +7,7 @@ setup(
     author_email="shoothzj@gmail.com",
     description="A Python package for interacting with the Pulsar admin API",
     long_description_content_type="text/markdown",
-    url="https://github.com/your_username/pulsar_admin",
+    url="https://github.com/protocol-laboratory/pulsar_admin",
     packages=find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
