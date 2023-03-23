@@ -1,0 +1,9 @@
+# file system
+.DS_Store
+
+# ide
+**/.idea
+
+venv/**
+
+**/__pycache__

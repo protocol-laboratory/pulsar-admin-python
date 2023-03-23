@@ -1,0 +1,4 @@
+[MASTER]
+ignore=static,.git
+[MESSAGES CONTROL]
+disable=invalid-name

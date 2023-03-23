@@ -1,0 +1,20 @@
+name: Unit Test
+
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install dependencies
+      run: pip3 install -r requirements.txt
+    - name: start pulsar container
+      run: docker run -p 6650:6650 -p 8080:8080 apachepulsar/pulsar:2.10.1 /pulsar/bin/pulsar standalone --no-functions-worker --no-stream-storage
+    - name: Wait for pulsar start
+      run: sleep 30
+    - name: Run unit tests
+      run: python -m unittest discover pulsar_admin  -p '*_test.py'
