@@ -4,7 +4,7 @@ import unittest
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from urllib.parse import urlparse, parse_qs
 
-from http_client import HttpClient
+from pulsar_admin.http_client import HttpClient
 
 
 class MockServerRequestHandler(BaseHTTPRequestHandler):
@@ -100,7 +100,7 @@ class TestHttpClient(unittest.TestCase):
         status_code, response = http_client.post(path, data=json.dumps(data), params=params)
 
         # assert response matches expected format
-        expected_response = f"Received POST request with data: " + """{"name": "test", "value": "123"}"""
+        expected_response = "Received POST request with data: " + """{"name": "test", "value": "123"}"""
         self.assertEqual(200, status_code)
         self.assertEqual(expected_response, response)
 
@@ -116,7 +116,7 @@ class TestHttpClient(unittest.TestCase):
         status_code, response = http_client.post(path, data=data, params=params)
 
         # assert response matches expected format
-        expected_response = f"Received POST request with data: " + """{"name": "test", "value": "123"}"""
+        expected_response = "Received POST request with data: " + """{"name": "test", "value": "123"}"""
         self.assertEqual(200, status_code)
         self.assertEqual(expected_response, response)
 
@@ -132,6 +132,6 @@ class TestHttpClient(unittest.TestCase):
         status_code, response = http_client.put(path, data=json.dumps(data), params=params)
 
         # assert response matches expected format
-        expected_response = f"Received PUT request with data: " + """{"name": "test", "value": "123"}"""
+        expected_response = "Received PUT request with data: " + """{"name": "test", "value": "123"}"""
         self.assertEqual(200, status_code)
         self.assertEqual(expected_response, response)

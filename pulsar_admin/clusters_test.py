@@ -1,7 +1,7 @@
 import unittest
 
-from clusters import Clusters
-from http_client import HttpClient
+from pulsar_admin.clusters import Clusters
+from pulsar_admin.http_client import HttpClient
 
 
 class TestClusters(unittest.TestCase):
