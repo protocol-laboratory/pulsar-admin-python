@@ -19,10 +19,10 @@ class Namespaces:
             )
         return json.loads(response)
 
-    def create_namespace(self, tenant, namespace):
+    def create_namespace(self, tenant, namespace, namespace_policy = None):
         try:
             status_code, response = self.http_client.put(
-                f"{UrlConst.NAMESPACES}/{tenant}/{namespace}"
+                f"{UrlConst.NAMESPACES}/{tenant}/{namespace}", namespace_policy
             )
             if status_code != 204:
                 raise PulsarAdminException(
@@ -40,3 +40,13 @@ class Namespaces:
             raise PulsarAdminException(
                 f"Failed to delete namespace {tenant}/{namespace}, status code {status_code}, body: {response}"
             )
+
+    def get_namespace_policy(self, tenant, namespace) -> dict:
+        status_code, response = self.http_client.get(
+            f"{UrlConst.NAMESPACES}/{tenant}/{namespace}"
+        )
+        if status_code != 200:
+            raise PulsarAdminException(
+                f"Failed to get policy of namespace {tenant}/{namespace}, status code {status_code}, body: {response}"
+            )
+        return json.loads(response)
