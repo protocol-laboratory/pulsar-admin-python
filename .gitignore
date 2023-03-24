@@ -7,3 +7,7 @@
 venv/**
 
 **/__pycache__
+
+pulsar_admin.egg-info/**
+build/**
+dist/**
