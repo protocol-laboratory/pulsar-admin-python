@@ -4,6 +4,7 @@ class UrlConst:
     BROKERS = BASE_URL_V2 + "/brokers"
     TENANTS = BASE_URL_V2 + "/tenants"
     NAMESPACES = BASE_URL_V2 + "/namespaces"
+    PERSISTENT = BASE_URL_V2 + "/persistent"
     BACKLOG_QUOTA_MAP = "/backlogQuotaMap"
     BACKLOG_QUOTA = "/backlogQuota"
     BACKLOG = "/backlog"
