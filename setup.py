@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="pulsar_admin",
-    version="0.0.1",
+    version="0.0.2",
     author="shoothzj",
     author_email="shoothzj@gmail.com",
     description="A Python package for interacting with the Pulsar admin API",

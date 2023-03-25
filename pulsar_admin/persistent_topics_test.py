@@ -37,9 +37,12 @@ class TestPersistentTopics(unittest.TestCase):
         # Create a partitioned topic
         num_partitions = 3
         self.admin.persistent_topics.create_partitioned_topic(tenant, namespace, topic, num_partitions, False)
+        self.assertEqual([f'persistent://{tenant}/{namespace}/{topic}'],
+                         self.admin.persistent_topics.get_partitioned_topic_list(tenant, namespace, topic))
 
         # Delete the partitioned topic
         self.admin.persistent_topics.delete_partitioned_topic(tenant, namespace, topic, False, False)
+        self.assertEqual([], self.admin.persistent_topics.get_partitioned_topic_list(tenant, namespace, topic))
         self.admin.namespaces.delete_namespace(tenant, namespace)
         self.admin.tenants.delete_tenant(tenant, False)
 

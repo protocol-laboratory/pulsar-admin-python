@@ -56,11 +56,20 @@ class PersistentTopics:
             raise PulsarAdminException(f"failed to delete non-partitioned topic {tenant}/{namespace}/{topic}, "
                                        f"status code {status_code}")
 
+    def get_partitioned_topic_list(self, tenant: str, namespace: str, include_system_topic: bool = False):
+        params = [("includeSystemTopic", include_system_topic)]
+        url = f"{UrlConst.PERSISTENT}/{tenant}/{namespace}{UrlConst.PARTITIONED}"
+        status_code, subscriptions = self.http_client.get(url, params=params)
+        if status_code != 200:
+            raise PulsarAdminException(f"failed to get partitioned topic for namespace {tenant}/{namespace}, "
+                                       f"status code {status_code}")
+        return json.loads(subscriptions)
+
     def get_subscription(self, tenant: str, namespace: str, topic: str, authoritative: bool = False) -> list:
         params = [("authoritative", authoritative)]
         url = f"{UrlConst.PERSISTENT}/{tenant}/{namespace}/{topic}/subscriptions"
         status_code, subscriptions = self.http_client.get(url, params=params)
         if status_code != 200:
-            raise PulsarAdminException(f"failed to delete non-partitioned topic {tenant}/{namespace}/{topic}, "
+            raise PulsarAdminException(f"failed to get subscriptions for topic {tenant}/{namespace}/{topic}, "
                                        f"status code {status_code}")
         return json.loads(subscriptions)
